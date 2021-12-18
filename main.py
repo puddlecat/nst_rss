@@ -3,7 +3,7 @@ import pdfkit
 import re
 import os
 from datetime import datetime, timedelta
-#config = pdfkit.configuration(wkhtmltopdf='C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe') #todo: change this on pi
+#config = pdfkit.configuration(wkhtmltopdf='C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe') #needed on windows but not on pi
 
 options = {'enable-local-file-access':None}
 
@@ -67,7 +67,7 @@ def make_pdf(posts_list):
             with open('./'+title+str(poster[title].index(post))+'output.html', 'w') as f:
                 f.write(content)
 
-    # todo: make sure posts are added in chronological order, also figure out why this is outputting a different font on linux
+    # todo: make sure posts are added in chronological order
     # create the front page
     with open('aaaaaaaafrontpage.html', 'w') as f:
         f.write('<style>font-family: "Times New Roman", Times, serif;</style><h1>NEW POSTS FOR '+str(datetime.strftime(datetime.now(),'%m/%d/%Y'))+'</h1><br><h3>retrieved at '+datetime.strftime(datetime.now(),'%I:%M'))
